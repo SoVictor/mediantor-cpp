@@ -14,7 +14,7 @@ void MediantorSqrtDecomp::Insert(int x) {
   } else {
     int idx = static_cast<int>(elements_.size()) - 1;
     while (idx > 0 && elements_[idx].front() > x) {
-      idx--;
+      --idx;
     }
     bool inserted = false;
     for (auto it = elements_[idx].begin(); it != elements_[idx].end(); ++it) {
@@ -28,7 +28,7 @@ void MediantorSqrtDecomp::Insert(int x) {
       elements_[idx].push_back(x);
     }
 
-    for (int i = idx + 1; i < elements_.size(); i++) {
+    for (int i = idx + 1; i < elements_.size(); ++i) {
       int y = elements_[i - 1].back();
       elements_[i - 1].pop_back();
       elements_[i].push_front(y);
@@ -40,7 +40,7 @@ void MediantorSqrtDecomp::Insert(int x) {
       elements_[elements_.size() - 1].push_back(y);
     }
   }
-  size_++;
+  ++size_;
 }
 
 int MediantorSqrtDecomp::Take() {
@@ -49,7 +49,7 @@ int MediantorSqrtDecomp::Take() {
 
   int idx = 0;
   while (k >= list_size_) {
-    idx++;
+    ++idx;
     k -= list_size_;
   }
 
@@ -59,10 +59,10 @@ int MediantorSqrtDecomp::Take() {
       elements_[idx].erase(it);
       break;
     }
-    k--;
+    --k;
   }
 
-  for (int i = idx + 1; i < elements_.size(); i++) {
+  for (int i = idx + 1; i < elements_.size(); ++i) {
     int y = elements_[i].front();
     elements_[i].pop_front();
     elements_[i - 1].push_back(y);
@@ -71,7 +71,7 @@ int MediantorSqrtDecomp::Take() {
     elements_.resize(elements_.size() - 1);
   }
 
-  size_--;
+  --size_;
   return ans;
 }
 

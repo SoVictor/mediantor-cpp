@@ -79,7 +79,7 @@ TEST_P(MediantorTest, TestOnData) {
 
     std::unique_ptr<IMediantor> mediantor = MakeMediantor(mediantor_type, n);
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
       int operation;
       input >> operation;
       if (operation) {

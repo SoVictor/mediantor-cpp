@@ -39,7 +39,7 @@ int main() {
       MakeMediantor(static_cast<Mediantors>(mediantor_type), n);
 
   std::vector<int> output;
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < n; ++i) {
     int operation;
     cin >> operation;
     if (operation) {
