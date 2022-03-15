@@ -1,5 +1,7 @@
 #include "mediantor/mediantor_heap.h"
 
+namespace sovictor::mediantor {
+
 void MediantorHeap::Insert(int x) {
   if (lower_half_.empty()) {
     lower_half_.push(x);
@@ -33,3 +35,5 @@ void MediantorHeap::MaybeBalance() {
     lower_half_.pop();
   }
 }
+
+}  // namespace sovictor::mediantor

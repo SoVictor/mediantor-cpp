@@ -5,6 +5,9 @@
 #include "mediantor/mediantor_sorted_list.h"
 #include "mediantor/mediantor_sqrt_decomp.h"
 
+namespace sovictor {
+namespace mediantor {
+
 enum class Mediantors {
   kHeap,
   kSqrtDecomp,
@@ -44,3 +47,6 @@ std::string to_string(Mediantors mediantor_type) {
   // Can't be reached.
   return "";
 }
+
+}  // namespace mediantor
+}  // namespace sovictor

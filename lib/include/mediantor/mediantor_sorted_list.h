@@ -4,6 +4,9 @@
 
 #include "i_mediantor.h"
 
+namespace sovictor {
+namespace mediantor {
+
 class MediantorSortedList : public IMediantor {
  public:
   MediantorSortedList() = default;
@@ -22,3 +25,6 @@ class MediantorSortedList : public IMediantor {
  private:
   std::list<int> elements_;
 };  // class MediantorSortedList
+
+}  // namespace mediantor
+}  // namespace sovictor

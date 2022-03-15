@@ -5,6 +5,9 @@
 
 #include "i_mediantor.h"
 
+namespace sovictor {
+namespace mediantor {
+
 class MediantorSqrtDecomp : public IMediantor {
  public:
   explicit MediantorSqrtDecomp(int max_size);
@@ -25,3 +28,6 @@ class MediantorSqrtDecomp : public IMediantor {
   int list_size_;
   std::vector<std::list<int>> elements_;
 };  // class MediantorSqrtDecomp
+
+}  // namespace mediantor
+}  // namespace sovictor

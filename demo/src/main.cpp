@@ -4,9 +4,17 @@
 
 #include "mediantor.h"
 
+namespace {
+
 using std::cin;
 using std::cout;
 using std::endl;
+
+using sovictor::mediantor::IMediantor;
+using sovictor::mediantor::MakeMediantor;
+using sovictor::mediantor::Mediantors;
+
+}  // namespace
 
 int main() {
   int mediantor_type = -1;

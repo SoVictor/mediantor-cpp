@@ -2,8 +2,10 @@
 
 #include <cmath>
 
+namespace sovictor::mediantor {
+
 MediantorSqrtDecomp::MediantorSqrtDecomp(int max_size)
-	: size_(0), list_size_(std::max(1, static_cast<int>(sqrt(max_size)))) {}
+    : size_(0), list_size_(std::max(1, static_cast<int>(sqrt(max_size)))) {}
 
 void MediantorSqrtDecomp::Insert(int x) {
   if (size_ == 0) {
@@ -72,3 +74,5 @@ int MediantorSqrtDecomp::Take() {
   size_--;
   return ans;
 }
+
+}  // namespace sovictor::mediantor

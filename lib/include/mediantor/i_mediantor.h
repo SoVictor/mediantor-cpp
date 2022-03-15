@@ -1,5 +1,8 @@
 #pragma once
 
+namespace sovictor {
+namespace mediantor {
+
 class IMediantor {
  public:
   virtual ~IMediantor() = default;
@@ -9,3 +12,6 @@ class IMediantor {
 
   virtual const size_t size() = 0;
 };  // class IMediantor
+
+}  // namespace mediantor
+}  // namespace sovictor

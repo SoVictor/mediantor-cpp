@@ -5,6 +5,9 @@
 
 #include "i_mediantor.h"
 
+namespace sovictor {
+namespace mediantor {
+
 class MediantorHeap : public IMediantor {
  public:
   MediantorHeap() = default;
@@ -28,3 +31,6 @@ class MediantorHeap : public IMediantor {
   std::priority_queue<int> lower_half_;
   std::priority_queue<int, std::vector<int>, std::greater<int>> upper_half_;
 };  // class MediantorHeap
+
+}  // namespace mediantor
+}  // namespace sovictor

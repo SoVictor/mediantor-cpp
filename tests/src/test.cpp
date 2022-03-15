@@ -14,6 +14,12 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+using sovictor::mediantor::IMediantor;
+using sovictor::mediantor::MakeMediantor;
+using sovictor::mediantor::MediantorSortedList;
+using sovictor::mediantor::Mediantors;
+using sovictor::mediantor::to_string;
+
 namespace fs = std::experimental::filesystem;
 
 std::vector<fs::path> ListFilesInDirectory(const std::string& directory,

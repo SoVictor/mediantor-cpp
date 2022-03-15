@@ -1,5 +1,7 @@
 #include "mediantor/mediantor_sorted_list.h"
 
+namespace sovictor::mediantor {
+
 void MediantorSortedList::Insert(int x) {
   for (auto it = elements_.begin(); it != elements_.end(); ++it) {
     if (*it > x) {
@@ -19,3 +21,5 @@ int MediantorSortedList::Take() {
 
   return ans;
 }
+
+}  // namespace sovictor::mediantor
