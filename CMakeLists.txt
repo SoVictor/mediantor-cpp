@@ -18,6 +18,10 @@ endmacro()
 
 mediantor_set_output_directories( ${CMAKE_BINARY_DIR}/out )
 
+add_subdirectory(third_party/googletest)
+
 add_subdirectory( lib )
 
 add_subdirectory( demo )
+
+add_subdirectory( tests )

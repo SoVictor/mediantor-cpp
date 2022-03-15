@@ -1,3 +1,6 @@
+#include <iostream>
+#include <memory>
+
 #include "i_mediantor.h"
 #include "mediantor_sqrt_decomp.h"
 
@@ -9,7 +12,7 @@ int main() {
 	int n;
 	cin >> n;
 
-	std::unique_ptr<IMediantor> mediantor = std::make_unique<MediatorSqrtDecomp>(n);
+	std::unique_ptr<IMediantor> mediantor = std::make_unique<MediantorSqrtDecomp>(n);
 
 	for (int i = 0; i < n; i++)
 	{
@@ -17,7 +20,7 @@ int main() {
 		cin >> operation;
 		if (operation) {
 			int x;
-			std::cin >> x;
+			cin >> x;
 			mediantor->insert(x);
 		}
 		else {
