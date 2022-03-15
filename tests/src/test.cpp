@@ -41,7 +41,7 @@ TEST_P(MediantorTest, TrivialTest) {
   const Mediantors mediantor_type = GetParam();
   cout << endl << "checking " << to_string(mediantor_type) << " ..." << endl;
 
-  const int max_size = 4;
+  const size_t max_size = 4;
 
   std::unique_ptr<IMediantor> mediantor =
       MakeMediantor(mediantor_type, max_size);
@@ -77,7 +77,8 @@ TEST_P(MediantorTest, TestOnData) {
     int n;
     input >> n;
 
-    std::unique_ptr<IMediantor> mediantor = MakeMediantor(mediantor_type, n);
+    std::unique_ptr<IMediantor> mediantor =
+        MakeMediantor(mediantor_type, static_cast<size_t>(n));
 
     for (int i = 0; i < n; ++i) {
       int operation;

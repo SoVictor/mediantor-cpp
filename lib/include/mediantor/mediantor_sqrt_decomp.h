@@ -10,7 +10,7 @@ namespace mediantor {
 
 class MediantorSqrtDecomp : public IMediantor {
  public:
-  explicit MediantorSqrtDecomp(int max_size);
+  explicit MediantorSqrtDecomp(size_t max_size);
 
   ~MediantorSqrtDecomp() override = default;
 
@@ -25,8 +25,8 @@ class MediantorSqrtDecomp : public IMediantor {
 
  private:
   int size_;
-  int list_size_;
-  std::vector<std::list<int>> elements_;
+  int bucket_size_;
+  std::vector<std::list<int>> buckets_;
 };  // class MediantorSqrtDecomp
 
 }  // namespace mediantor

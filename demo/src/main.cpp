@@ -35,8 +35,8 @@ int main() {
   int n;
   cin >> n;
 
-  std::unique_ptr<IMediantor> mediantor =
-      MakeMediantor(static_cast<Mediantors>(mediantor_type), n);
+  std::unique_ptr<IMediantor> mediantor = MakeMediantor(
+      static_cast<Mediantors>(mediantor_type), static_cast<size_t>(n));
 
   std::vector<int> output;
   for (int i = 0; i < n; ++i) {

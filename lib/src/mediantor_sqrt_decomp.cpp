@@ -2,73 +2,80 @@
 
 #include <cmath>
 
+namespace {
+
+size_t size_t_sqrt(size_t x) {
+  return static_cast<size_t>(sqrt(static_cast<double>(x)));
+}
+
+}  // namespace
+
 namespace sovictor::mediantor {
 
-MediantorSqrtDecomp::MediantorSqrtDecomp(int max_size)
-    : size_(0), list_size_(std::max(1, static_cast<int>(sqrt(max_size)))) {}
+MediantorSqrtDecomp::MediantorSqrtDecomp(size_t max_size)
+    : size_(0), bucket_size_(std::max(size_t(1), size_t_sqrt(max_size))) {}
 
 void MediantorSqrtDecomp::Insert(int x) {
   if (size_ == 0) {
-    elements_.push_back(std::list<int>());
-    elements_[0].push_back(x);
-  } else {
-    int idx = static_cast<int>(elements_.size()) - 1;
-    while (idx > 0 && elements_[idx].front() > x) {
-      --idx;
-    }
-    bool inserted = false;
-    for (auto it = elements_[idx].begin(); it != elements_[idx].end(); ++it) {
-      if (*it > x) {
-        elements_[idx].insert(it, x);
-        inserted = true;
-        break;
-      }
-    }
-    if (!inserted) {
-      elements_[idx].push_back(x);
-    }
+    buckets_.push_back(std::list<int>());
+    buckets_.front().push_back(x);
+    ++size_;
+    return;
+  }
 
-    for (int i = idx + 1; i < elements_.size(); ++i) {
-      int y = elements_[i - 1].back();
-      elements_[i - 1].pop_back();
-      elements_[i].push_front(y);
-    }
-    if (elements_[elements_.size() - 1].size() > list_size_) {
-      int y = elements_[elements_.size() - 1].back();
-      elements_[elements_.size() - 1].pop_back();
-      elements_.push_back(std::list<int>());
-      elements_[elements_.size() - 1].push_back(y);
+  size_t bucket_idx = buckets_.size() - 1;
+  while (bucket_idx > 0 && buckets_[bucket_idx].front() > x) {
+    --bucket_idx;
+  }
+  std::list<int>& bucket = buckets_[bucket_idx];
+
+  bool inserted = false;
+  for (auto it = bucket.begin(); it != bucket.end(); ++it) {
+    if (*it > x) {
+      bucket.insert(it, x);
+      inserted = true;
+      break;
     }
   }
+  if (!inserted) {
+    bucket.push_back(x);
+  }
+
+  for (size_t i = bucket_idx; i + 1 < buckets_.size(); ++i) {
+    const int x = buckets_[i].back();
+    buckets_[i].pop_back();
+    buckets_[i + 1].push_front(x);
+  }
+  if (buckets_.back().size() > bucket_size_) {
+    const int x = buckets_.back().back();
+    buckets_.back().pop_back();
+    buckets_.push_back(std::list<int>());
+    buckets_.back().push_back(x);
+  }
+
   ++size_;
 }
 
 int MediantorSqrtDecomp::Take() {
   int ans = 0;
-  int k   = (size_ - 1) / 2;
 
-  int idx = 0;
-  while (k >= list_size_) {
-    ++idx;
-    k -= list_size_;
-  }
+  const size_t idx           = (size_ - 1) / 2;
+  const size_t bucket_idx    = idx / bucket_size_;
+  const size_t idx_in_bucket = idx % bucket_size_;
+  std::list<int>& bucket     = buckets_[bucket_idx];
 
-  for (auto it = elements_[idx].begin(); it != elements_[idx].end(); ++it) {
-    if (k == 0) {
-      ans = *it;
-      elements_[idx].erase(it);
-      break;
-    }
-    --k;
-  }
+  auto it = bucket.begin();
+  std::advance(it, idx_in_bucket);
+  ans = *it;
+  bucket.erase(it);
 
-  for (int i = idx + 1; i < elements_.size(); ++i) {
-    int y = elements_[i].front();
-    elements_[i].pop_front();
-    elements_[i - 1].push_back(y);
+  for (size_t i = bucket_idx; i + 1 < buckets_.size(); ++i) {
+    int y = buckets_[i + 1].front();
+    buckets_[i + 1].pop_front();
+    buckets_[i].push_back(y);
   }
-  if (elements_[elements_.size() - 1].empty()) {
-    elements_.resize(elements_.size() - 1);
+  if (buckets_.back().empty()) {
+    buckets_.pop_back();
   }
 
   --size_;

@@ -16,7 +16,7 @@ enum class Mediantors {
 };
 
 std::unique_ptr<IMediantor> MakeMediantor(Mediantors mediantor_type,
-                                          int max_size) {
+                                          size_t max_size) {
   switch (mediantor_type) {
     case Mediantors::kHeap:
       return std::make_unique<MediantorHeap>();
