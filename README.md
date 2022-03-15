@@ -1,4 +1,7 @@
 ﻿# Mediantor-cpp
+ 
+![tests](https://github.com/SoVictor/mediantor-cpp/actions/workflows/gtest.yml/badge.svg)
+ 
 Mediantor is a container that stores a collection of integers and provides only two operations:
 
 * `Insert(x)` - adds _x_ to collection;
