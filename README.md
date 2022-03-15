@@ -1,14 +1,14 @@
 ﻿# Mediantor-cpp
 Mediantor is a container that stores a collection of integers and provides only two operations:
 
-* Insert(x) - add x to collection;
-* Take() - return the value of the median element in the collection and remove this element.
+* `Insert(x)` - adds _x_ to collection;
+* `Take()` - returns the value of the median element in the collection and removes this element.
 
 This project provides three implementations of Mediantor:
 
-1. As a sorted list, with complexity O(N) for each operation;
-2. As SQR-decomposition, with complexity O(sqrt(N)) for each operation;
-3. As two heaps, with complexity O(log(N)) for each operation.
+1. As a sorted list, with complexity _O(N)_ for each operation;
+2. As SQR-decomposition, with complexity _O(sqrt(N))_ for each operation;
+3. As two heaps, with complexity _O(log(N))_ for each operation.
 
 ## Building
 
@@ -26,21 +26,21 @@ Run test.exe to get results of automated testing.
 
 ## Structure of a test input
 
-The first line of input should contain one single integer n (1 ≤ n ≤ 10^5) - a number of operations with Mediantor.
+The first line of input should contain one single integer _n_ (1 ≤ _n_ ≤ 10<sup>5</sup>) - a number of operations with Mediantor.
 
-The following n lines should contain descriptions of these operations. If the line reads like
+The following _n_ lines should contain descriptions of these operations. If the line reads like
 
-"1 x",
+`1 x`,
 
-it means that Insert(x) will be performed (-10^9 ≤ x ≤ 10^9). If the line contains one single zero, it means that Take() performed.
+it means that `Insert(x)` will be performed (-10<sup>9</sup> ≤ _x_ ≤ 10<sup>9</sup>). If the line contains one single zero, it means that `Take()` performed.
 
-It is granted that Take() will not be called when Mediantor is empty.
+It is granted that `Take()` will not be called when Mediantor is empty.
 
 Manual tests should follow the same rules.
 
 ## Structure of a test output
 
-For each called Take(), output will contain a line with returned number.
+For each called `Take()`, output will contain a line with a returned number.
 
 ## Example
 
