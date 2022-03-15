@@ -1,4 +1,4 @@
-#include "mediantor_sorted_list.h"
+#include "mediantor/mediantor_sorted_list.h"
 
 void MediantorSortedList::insert(int x) {
 	for (auto it = elements_.begin(); it != elements_.end(); ++it) {

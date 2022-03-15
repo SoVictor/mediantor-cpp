@@ -6,10 +6,7 @@
 
 #include "gtest/gtest.h"
 
-#include "i_mediantor.h"
-#include "mediantor_heap.h"
-#include "mediantor_sorted_list.h"
-#include "mediantor_sqrt_decomp.h"
+#include "mediantor.h"
 
 namespace {
 

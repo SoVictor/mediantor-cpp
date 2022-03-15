@@ -1,4 +1,4 @@
-#include "mediantor_heap.h"
+#include "mediantor/mediantor_heap.h"
 
 void MediantorHeap::insert(int x) {
 	if (lower_half_.empty()) {

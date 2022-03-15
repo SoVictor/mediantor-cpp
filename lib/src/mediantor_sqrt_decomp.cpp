@@ -1,7 +1,7 @@
-#include "mediantor_sqrt_decomp.h"
+#include "mediantor/mediantor_sqrt_decomp.h"
 
-MediantorSqrtDecomp::MediantorSqrtDecomp(int max_n)
-	: size_(0), list_size_(std::max(1, static_cast<int>(sqrt(max_n)))) {}
+MediantorSqrtDecomp::MediantorSqrtDecomp(int max_size)
+	: size_(0), list_size_(std::max(1, static_cast<int>(sqrt(max_size)))) {}
 
 void MediantorSqrtDecomp::insert(int x) {
 	if (size_ == 0)

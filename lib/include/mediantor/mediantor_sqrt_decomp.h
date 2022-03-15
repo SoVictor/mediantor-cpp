@@ -7,7 +7,7 @@
 
 class MediantorSqrtDecomp : public IMediantor {
 public:
-	explicit MediantorSqrtDecomp(int max_n);
+	explicit MediantorSqrtDecomp(int max_size);
 
 	~MediantorSqrtDecomp() override = default;
 
