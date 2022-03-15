@@ -1,0 +1,9 @@
+# IDE workspace files
+*.user
+CMakeSettings.json
+.vs/
+.vscode/
+
+# Build directories
+bin/
+build/
