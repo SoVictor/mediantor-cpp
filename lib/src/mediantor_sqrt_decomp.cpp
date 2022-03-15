@@ -1,5 +1,7 @@
 #include "mediantor/mediantor_sqrt_decomp.h"
 
+#include <cmath>
+
 MediantorSqrtDecomp::MediantorSqrtDecomp(int max_size)
 	: size_(0), list_size_(std::max(1, static_cast<int>(sqrt(max_size)))) {}
 

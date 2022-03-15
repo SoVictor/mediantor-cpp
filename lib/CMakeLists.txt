@@ -1,8 +1,9 @@
 set(HEADERS
-    include/i_mediantor.h
-    include/mediantor_heap.h
-    include/mediantor_sorted_list.h
-    include/mediantor_sqrt_decomp.h
+    include/mediantor.h
+    include/mediantor/i_mediantor.h
+    include/mediantor/mediantor_heap.h
+    include/mediantor/mediantor_sorted_list.h
+    include/mediantor/mediantor_sqrt_decomp.h
 )
 
 set(SOURCES

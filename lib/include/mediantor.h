@@ -24,6 +24,9 @@ std::unique_ptr<IMediantor> MakeMediantor(Mediantors mediantor_type,
     case Mediantors::kMediantorsNumber:
       exit(1);
   }
+
+  // Can't be reached.
+  return std::unique_ptr<IMediantor>();
 }
 
 std::string to_string(Mediantors mediantor_type) {
@@ -37,4 +40,7 @@ std::string to_string(Mediantors mediantor_type) {
     case Mediantors::kMediantorsNumber:
       return "kMediantorsNumber";
   }
+
+  // Can't be reached.
+  return "";
 }
