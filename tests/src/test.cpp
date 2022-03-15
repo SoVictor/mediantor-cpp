@@ -48,36 +48,43 @@ TEST(TestMediantor, TrivialTest) {
 }
 
 TEST(TestMediantor, TestOnData) {
-  for (const fs::path& input_path : ListFilesInDirectory("./data/", ".in")) {
-    const std::string test_name = input_path.stem().string();
-    cout << "checking test " << test_name << " ..." << endl;
+  for (int mediantor_type_idx = 0;
+       mediantor_type_idx < static_cast<int>(Mediantors::kMediantorsNumber);
+       ++mediantor_type_idx) {
+    Mediantors mediantor_type = static_cast<Mediantors>(mediantor_type_idx);
+    cout << endl;
+    cout << "checking " << to_string(mediantor_type) << " ..." << endl;
 
-    fs::path ans_path = input_path;
-    ans_path.replace_extension(".out");
+    for (const fs::path& input_path : ListFilesInDirectory("./data/", ".in")) {
+      const std::string test_name = input_path.stem().string();
+      cout << "checking test " << test_name << " ..." << endl;
 
-    std::ifstream input(input_path);
-    std::ifstream ans(ans_path);
+      fs::path ans_path = input_path;
+      ans_path.replace_extension(".out");
 
-    int n;
-    input >> n;
+      std::ifstream input(input_path);
+      std::ifstream ans(ans_path);
 
-    std::unique_ptr<IMediantor> mediantor =
-        std::make_unique<MediantorSortedList>();
+      int n;
+      input >> n;
 
-    for (int i = 0; i < n; i++) {
-      int operation;
-      input >> operation;
-      if (operation) {
-        int x;
-        input >> x;
-        mediantor->Insert(x);
-      } else {
-        int x;
-        ans >> x;
-        EXPECT_EQ(x, mediantor->Take());
+      std::unique_ptr<IMediantor> mediantor = MakeMediantor(mediantor_type, n);
+
+      for (int i = 0; i < n; i++) {
+        int operation;
+        input >> operation;
+        if (operation) {
+          int x;
+          input >> x;
+          mediantor->Insert(x);
+        } else {
+          int x;
+          ans >> x;
+          EXPECT_EQ(x, mediantor->Take());
+        }
       }
-    }
 
-    EXPECT_TRUE(ans.peek());
+      EXPECT_TRUE(ans.peek());
+    }
   }
 }

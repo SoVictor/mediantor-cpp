@@ -25,3 +25,16 @@ std::unique_ptr<IMediantor> MakeMediantor(Mediantors mediantor_type,
       exit(1);
   }
 }
+
+std::string to_string(Mediantors mediantor_type) {
+  switch (mediantor_type) {
+    case Mediantors::kHeap:
+      return "MediantorHeap";
+    case Mediantors::kSqrtDecomp:
+      return "MediantorSqrtDecomp";
+    case Mediantors::kSortedList:
+      return "MediantorSortedList";
+    case Mediantors::kMediantorsNumber:
+      return "kMediantorsNumber";
+  }
+}
