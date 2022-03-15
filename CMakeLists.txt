@@ -18,6 +18,15 @@ endmacro()
 
 mediantor_set_output_directories( ${CMAKE_BINARY_DIR}/out )
 
+if (MSVC)
+    set( CompilerFlags CMAKE_CXX_FLAGS CMAKE_CXX_FLAGS_DEBUG CMAKE_CXX_FLAGS_RELEASE )
+    foreach( CompilerFlag ${CompilerFlags} )
+        string(REGEX REPLACE "/MDd|/MTd|/MD|/MT|/W0|/W3" "" ${CompilerFlag} ${${CompilerFlag}})
+    endforeach()
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT /utf-8")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd /utf-8")
+endif()
+
 add_subdirectory(third_party/googletest)
 
 add_subdirectory( lib )

@@ -1,11 +1,13 @@
 set(HEADERS
     include/i_mediantor.h
     include/mediantor_heap.h
+    include/mediantor_sorted_list.h
     include/mediantor_sqrt_decomp.h
 )
 
 set(SOURCES
     src/mediantor_heap.cpp
+    src/mediantor_sorted_list.cpp
     src/mediantor_sqrt_decomp.cpp
 )
 

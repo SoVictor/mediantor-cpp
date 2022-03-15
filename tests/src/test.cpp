@@ -8,6 +8,7 @@
 
 #include "i_mediantor.h"
 #include "mediantor_heap.h"
+#include "mediantor_sorted_list.h"
 #include "mediantor_sqrt_decomp.h"
 
 namespace {
@@ -34,11 +35,16 @@ std::vector<fs::path> ListFilesInDirectory(const std::string& directory,
 TEST(TestMediantor, TrivialTest) {
 	const int n = 3;
 
-	std::unique_ptr<IMediantor> mediantor = std::make_unique<MediantorHeap>();
+	std::unique_ptr<IMediantor> mediantor = std::make_unique<MediantorSortedList>();
 
 	mediantor->insert(1);
 	mediantor->insert(2);
 	mediantor->insert(3);
+
+	EXPECT_EQ(2, mediantor->take());
+
+	mediantor->insert(2);
+	mediantor->insert(4);
 
 	EXPECT_EQ(2, mediantor->take());
 }
@@ -57,7 +63,7 @@ TEST(TestMediantor, TestOnData) {
 		int n;
 		input >> n;
 
-		std::unique_ptr<IMediantor> mediantor = std::make_unique<MediantorHeap>();
+		std::unique_ptr<IMediantor> mediantor = std::make_unique<MediantorSortedList>();
 
 		for (int i = 0; i < n; i++)
 		{
