@@ -1,5 +1,6 @@
 #include <iostream>
 #include <memory>
+#include <vector>
 
 #include "mediantor.h"
 
@@ -29,6 +30,7 @@ int main() {
   std::unique_ptr<IMediantor> mediantor =
       MakeMediantor(static_cast<Mediantors>(mediantor_type), n);
 
+  std::vector<int> output;
   for (int i = 0; i < n; i++) {
     int operation;
     cin >> operation;
@@ -37,8 +39,13 @@ int main() {
       cin >> x;
       mediantor->Insert(x);
     } else {
-      cout << mediantor->Take() << endl;
+      output.push_back(mediantor->Take());
     }
+  }
+
+  cout << endl << "Output:" << endl;
+  for (const int x : output) {
+    cout << x << endl;
   }
 
   return 0;
