@@ -46,14 +46,4 @@ For each called `Take()`, output will contain a line with a returned number.
 
 | Input       | Output      |
 | ----------- | ----------- |
-| 10          | 3           |
-| 1 1         | 2           |
-| 1 2         | 5           |
-| 1 5         | 1           |
-| 1 3         |             |
-| 1 9         |             |
-| 0           |             |
-| 0           |             |
-| 0           |             |
-| 1 -3        |             |
-| 0           |             |
+| 10<br>1 1<br>1 2<br>1 5<br>1 3<br>1 9<br>0<br>0<br>0<br>1 -3<br>0<br> | 3<br>2<br>5<br>1<br><br><br><br><br><br><br><br> |
