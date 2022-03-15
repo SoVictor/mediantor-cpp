@@ -6,22 +6,25 @@
 #include "i_mediantor.h"
 
 class MediantorHeap : public IMediantor {
-public:
-	MediantorHeap() = default;
+ public:
+  MediantorHeap() = default;
 
-	~MediantorHeap() override = default;
+  ~MediantorHeap() override = default;
 
-	void insert(int x) override;
+  // O(log N).
+  void Insert(int x) override;
 
-	int take() override;
+  // O(log N).
+  int Take() override;
 
-	const size_t size() override {
-		return lower_half_.size() + upper_half_.size();
-	}
+  // O(1).
+  const size_t size() override {
+    return lower_half_.size() + upper_half_.size();
+  }
 
-private:
-	void balance();
+ private:
+  void MaybeBalance();
 
-	std::priority_queue<int> lower_half_;
-	std::priority_queue<int, std::vector<int>, std::greater<int>> upper_half_;
-};
+  std::priority_queue<int> lower_half_;
+  std::priority_queue<int, std::vector<int>, std::greater<int>> upper_half_;
+};  // class MediantorHeap

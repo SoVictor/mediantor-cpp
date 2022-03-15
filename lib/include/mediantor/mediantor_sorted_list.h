@@ -5,19 +5,20 @@
 #include "i_mediantor.h"
 
 class MediantorSortedList : public IMediantor {
-public:
-	MediantorSortedList() = default;
+ public:
+  MediantorSortedList() = default;
 
-	~MediantorSortedList() override = default;
+  ~MediantorSortedList() override = default;
 
-	void insert(int x) override;
+  // O(N).
+  void Insert(int x) override;
 
-	int take() override;
+  // O(N).
+  int Take() override;
 
-	const size_t size() override {
-		return elements_.size();
-	}
+  // O(1).
+  const size_t size() override { return elements_.size(); }
 
-private:
-	std::list<int> elements_;
-};
+ private:
+  std::list<int> elements_;
+};  // class MediantorSortedList

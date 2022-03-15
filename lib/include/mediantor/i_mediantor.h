@@ -1,11 +1,11 @@
 #pragma once
 
 class IMediantor {
-public:
-	virtual ~IMediantor() = default;
+ public:
+  virtual ~IMediantor() = default;
 
-	virtual void insert(int x) = 0;
-	virtual int take() = 0;
+  virtual void Insert(int x) = 0;
+  virtual int Take()         = 0;
 
-	virtual const size_t size() = 0;
-};
+  virtual const size_t size() = 0;
+};  // class IMediantor
