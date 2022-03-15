@@ -7,6 +7,7 @@
 #include "gtest/gtest.h"
 
 #include "i_mediantor.h"
+#include "mediantor_heap.h"
 #include "mediantor_sqrt_decomp.h"
 
 namespace {
@@ -33,7 +34,7 @@ std::vector<fs::path> ListFilesInDirectory(const std::string& directory,
 TEST(TestMediantor, TrivialTest) {
 	const int n = 3;
 
-	std::unique_ptr<IMediantor> mediantor = std::make_unique<MediantorSqrtDecomp>(n);
+	std::unique_ptr<IMediantor> mediantor = std::make_unique<MediantorHeap>();
 
 	mediantor->insert(1);
 	mediantor->insert(2);
@@ -56,7 +57,7 @@ TEST(TestMediantor, TestOnData) {
 		int n;
 		input >> n;
 
-		std::unique_ptr<IMediantor> mediantor = std::make_unique<MediantorSqrtDecomp>(n);
+		std::unique_ptr<IMediantor> mediantor = std::make_unique<MediantorHeap>();
 
 		for (int i = 0; i < n; i++)
 		{
