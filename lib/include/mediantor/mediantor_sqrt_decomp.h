@@ -24,8 +24,8 @@ class MediantorSqrtDecomp : public IMediantor {
   const size_t size() override { return size_; }
 
  private:
-  int size_;
-  int bucket_size_;
+  size_t size_;
+  size_t bucket_size_;
   std::vector<std::list<int>> buckets_;
 };  // class MediantorSqrtDecomp
 
