@@ -57,8 +57,6 @@ void MediantorSqrtDecomp::Insert(int x) {
 }
 
 int MediantorSqrtDecomp::Take() {
-  int ans = 0;
-
   const size_t idx           = (size_ - 1) / 2;
   const size_t bucket_idx    = idx / bucket_size_;
   const size_t idx_in_bucket = idx % bucket_size_;
@@ -66,7 +64,7 @@ int MediantorSqrtDecomp::Take() {
 
   auto it = bucket.begin();
   std::advance(it, idx_in_bucket);
-  ans = *it;
+  const int ans = *it;
   bucket.erase(it);
 
   for (size_t i = bucket_idx; i + 1 < buckets_.size(); ++i) {
